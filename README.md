@@ -12,19 +12,19 @@ Production-level full stack AI Code Reviewer web app with React, Express, MongoD
 
 ### Dashboard
 
-![Dashboard](docs/screenshots/dashboard.png)
+![Dashboard](docs/screenshots/dashboard.png.jpeg)
 
 ### Review Code Workspace
 
-![Review Code](docs/screenshots/review-code.png)
+![Review Code](docs/screenshots/review-code.png.jpeg)
 
 ### Review History
 
-![Review History](docs/screenshots/review-history.png)
+![Review History](docs/screenshots/review-history.png.jpeg)
 
 ### Analytics
 
-![Analytics](docs/screenshots/analytics.png)
+![Analytics](docs/screenshots/analytics.png.jpeg)
 
 ## Features
 
