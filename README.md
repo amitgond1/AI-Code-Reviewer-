@@ -4,7 +4,6 @@ Production-level full stack AI Code Reviewer web app with React, Express, MongoD
 
 ## Screenshots
 
-> Add your screenshot files in `docs/screenshots/` with the exact names below.
 
 ### Landing Page
 
