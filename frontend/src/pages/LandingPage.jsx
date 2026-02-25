@@ -121,7 +121,7 @@ const LandingPage = () => {
       </main>
 
       <footer className="mx-auto mt-20 w-full max-w-7xl border-t border-slate-700/60 py-6 text-sm text-slate-400">
-        <p>© {new Date().getFullYear()} CodePulse AI. All rights reserved.</p>
+        <p>© {new Date().getFullYear()}  All rights reserved Amit Code pluse.</p>
       </footer>
     </div>
   );
