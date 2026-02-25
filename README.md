@@ -8,7 +8,7 @@ Production-level full stack AI Code Reviewer web app with React, Express, MongoD
 
 ### Landing Page
 
-![Landing Page](docs/screenshots/landing-page.png)
+![Landing Page](docs/screenshots/landing-page.png.jpeg)
 
 ### Dashboard
 
