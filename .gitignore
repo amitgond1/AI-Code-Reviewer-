@@ -1,0 +1,15 @@
+﻿node_modules/
+.venv/
+.venv*/
+venv/
+.env
+.env.local
+*.log
+
+frontend/dist/
+backend/uploads/
+__pycache__/
+*.pyc
+
+.DS_Store
+Thumbs.db
