@@ -1,12 +1,102 @@
-﻿# AI Code Reviewer SaaS (Full Stack)
+﻿# AI Code Reviewer SaaS
 
-Production-style full stack AI Code Reviewer platform with:
+Production-level full stack AI Code Reviewer web app with React, Express, MongoDB, and FastAPI.
 
-- React + Vite frontend
-- Node.js + Express backend
+## Screenshots
+
+> Add your screenshot files in `docs/screenshots/` with the exact names below.
+
+### Landing Page
+
+![Landing Page](docs/screenshots/landing-page.png)
+
+### Dashboard
+
+![Dashboard](docs/screenshots/dashboard.png)
+
+### Review Code Workspace
+
+![Review Code](docs/screenshots/review-code.png)
+
+### Review History
+
+![Review History](docs/screenshots/review-history.png)
+
+### Analytics
+
+![Analytics](docs/screenshots/analytics.png)
+
+## Features
+
+### Authentication & Security
+- User signup, login, logout
+- JWT authentication with remember-me support
+- Password hashing with bcrypt
+- Forgot/reset password flow
+- Protected routes and session expiry handling
+
+### AI Code Review
+- Paste code, upload files, or review from GitHub repo URL
+- Language support: C++, C, Python, JavaScript, Java
+- AI analysis for:
+  - bugs
+  - improvements
+  - time complexity
+  - space complexity
+  - code smells
+  - security warnings
+  - duplicate code hints
+  - performance suggestions
+  - naming suggestions
+- Code quality score (0-100)
+- Better-code suggestion block
+- In-page AI chat assistant
+
+### Dashboard & Insights
+- SaaS-style dashboard layout with sidebar/topbar
+- Review history and detailed review result pages
+- Analytics with Recharts:
+  - reviews per day
+  - language usage
+  - average/best/worst score
+- Notification center with read/unread state
+
+### User Experience
+- Monaco editor integration
+- Dark/light mode toggle
+- Responsive mobile/tablet/desktop layout
+- Framer Motion animations
+- PDF export for review reports
+- Profile update + avatar upload
+- Settings: password change and account deletion
+
+## Tech Stack
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- Framer Motion
+- React Router
+- Axios
+- Monaco Editor (`@monaco-editor/react`)
+- Recharts
+- React Icons
+
+### Backend
+- Node.js
+- Express.js
 - MongoDB + Mongoose
-- FastAPI AI service
-- Monaco editor, Recharts analytics, JWT auth, file upload, GitHub integration, PDF export, notifications, AI chat assistant
+- JWT (`jsonwebtoken`)
+- bcryptjs
+- Multer
+- Nodemailer
+- PDFKit
+
+### AI Service
+- Python
+- FastAPI
+- Uvicorn
+- OpenAI SDK (optional, with fallback heuristic analyzer)
 
 ## Project Structure
 
@@ -27,74 +117,13 @@ backend/
 ai-server/
   main.py
   requirements.txt
+docs/
+  screenshots/
 ```
 
-## Features Included
+## API Overview
 
-1. Authentication
-- Signup, Login, Logout
-- JWT (remember me short/long expiry)
-- Password hashing (bcrypt)
-- Forgot password + reset password flow
-- Protected routes and session expiry handling
-
-2. Landing Page
-- Hero, Features, Screenshots, Tech Stack, Testimonials, Footer
-- Smooth animations with Framer Motion
-
-3. Dashboard UX
-- Sidebar + sticky top bar
-- Avatar + notifications dropdown
-- Mobile responsive hamburger menu
-
-4. Code Review Workspace
-- Monaco editor with syntax highlighting/line numbers/auto-indent
-- Dark/light mode
-- Supported languages: C++, Python, JavaScript, Java, C
-- Upload file / paste code / GitHub repo input
-- Lines of code and language detection
-
-5. AI Review Engine
-- Backend sends code to FastAPI `/analyze`
-- JSON output with:
-  - bugs
-  - improvements
-  - time_complexity
-  - space_complexity
-  - better_code
-  - score
-  - code_smells
-  - security_warnings
-  - duplicate_code
-  - performance_suggestions
-  - naming_suggestions
-
-6. Review Output
-- Score card with circular visualization
-- Complexity charts
-- Review cards
-- Export review PDF
-
-7. History + Analytics
-- Review history list and detail page
-- Analytics dashboard (reviews/day, languages, avg/best/worst scores)
-
-8. Profile + Settings
-- Edit profile and upload avatar
-- Theme toggle
-- Change password
-- Delete account
-
-9. Notifications
-- Review completed notifications
-- Fetch + mark as read
-
-10. AI Chat Assistant
-- Ask questions about your code with `/chat`
-
-## Backend API
-
-### Auth Routes
+### Auth
 - `POST /api/signup`
 - `POST /api/login`
 - `POST /api/logout`
@@ -102,7 +131,7 @@ ai-server/
 - `POST /api/reset-password`
 - `POST /api/reset-password/:token`
 
-### Review Routes
+### Reviews
 - `POST /api/review`
 - `POST /api/review/github`
 - `GET /api/reviews`
@@ -110,83 +139,45 @@ ai-server/
 - `DELETE /api/review/:id`
 - `GET /api/review/:id/export`
 
-### User Routes
+### User
 - `GET /api/profile`
 - `PUT /api/profile`
 - `PUT /api/change-password`
 - `DELETE /api/account`
 
-### Other
+### Analytics / Notifications / Chat
 - `GET /api/analytics`
 - `GET /api/notifications`
 - `POST /api/notifications`
 - `PATCH /api/notifications/:id/read`
 - `POST /api/chat`
 
-## AI Server API
-
+### AI Server
 - `POST /analyze`
-  - input: `code`, `language`
-  - output: review JSON
 - `POST /chat`
-  - input: `question`, `code`, `language`
-  - output: assistant answer
 - `GET /health`
 
-## Installation Steps
+## Setup
 
-## 1) Clone / open project
-
-```bash
-cd "AI resume"
-```
-
-## 2) Setup Backend
-
+### 1) Backend
 ```bash
 cd backend
 npm install
 copy .env.example .env
-```
-
-Update `backend/.env` with your values:
-
-- `MONGO_URI`
-- `JWT_SECRET`
-- `CLIENT_URL`
-- `AI_SERVICE_URL`
-- optional: SMTP + GitHub token
-
-Run backend:
-
-```bash
 npm run dev
 ```
 
-Backend runs on `http://localhost:5000`.
-
-## 3) Setup AI Server
-
+### 2) AI Server
 ```bash
 cd ../ai-server
 python -m venv .venv
 .venv\Scripts\activate
 pip install -r requirements.txt
 copy .env.example .env
-```
-
-Optional: set `OPENAI_API_KEY` in `ai-server/.env`.
-
-Run AI server:
-
-```bash
 uvicorn main:app --reload --port 8000
 ```
 
-AI server runs on `http://localhost:8000`.
-
-## 4) Setup Frontend
-
+### 3) Frontend
 ```bash
 cd ../frontend
 npm install
@@ -194,21 +185,9 @@ copy .env.example .env
 npm run dev
 ```
 
-Frontend runs on `http://localhost:5173`.
+## Environment Variables
 
-## MongoDB Setup
-
-Use local MongoDB:
-
-```bash
-mongod
-```
-
-or MongoDB Atlas URI in `backend/.env`.
-
-## Environment Variables Summary
-
-### backend/.env
+### `backend/.env`
 - `NODE_ENV`
 - `PORT`
 - `MONGO_URI`
@@ -217,19 +196,17 @@ or MongoDB Atlas URI in `backend/.env`.
 - `JWT_EXPIRES_IN_LONG`
 - `CLIENT_URL`
 - `AI_SERVICE_URL`
-- `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `EMAIL_FROM` (optional)
-- `GITHUB_TOKEN`, `GITHUB_DEFAULT_BRANCH` (optional)
+- SMTP vars (optional)
+- GitHub token vars (optional)
 
-### frontend/.env
-- `VITE_API_URL` (default `http://localhost:5000/api`)
+### `frontend/.env`
+- `VITE_API_URL`
 
-### ai-server/.env
+### `ai-server/.env`
 - `BACKEND_ORIGIN`
 - `OPENAI_API_KEY` (optional)
 - `OPENAI_MODEL`
 
 ## Notes
-
-- If no OpenAI key is set, AI server uses built-in heuristic analysis fallback so the app still works.
-- Forgot-password email uses SMTP if configured; otherwise reset URL/token is logged/returned in dev mode.
-- GitHub integration supports public repos and common code extensions.
+- If `OPENAI_API_KEY` is not configured, the AI service uses fallback heuristic analysis.
+- In development, forgot-password can return a dev token when SMTP is not configured.
